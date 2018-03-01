@@ -23,7 +23,7 @@ inputs_tanh = ((K.exp(x) - K.exp(-x)))/(K.exp(x) +K.exp(-x))
 grad_tanh = K.gradients(loss = tanh, variables = [x])
 
 function_tanh = K.function(inputs = (x,),outputs = (tanh,))
-function_grad_tanh = K.function(inputs =(x,) outputs = (grad_tanh,))
+function_grad_tanh = K.function(inputs =(x,) outputs = (grad_tanh))
 
 function_tanh((-100,))
 function_tanh((-1,))
