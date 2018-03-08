@@ -49,8 +49,8 @@ num_test_samples = test_X.shape[0]
 input_dim = train_X.shape[1]
 
 # defining the batch size and epochs
-batch_size = 64
-num_epochs = 20
+batch_size = 128
+num_epochs = 40
 
 # defining the learning rate
 lr = 0.1
@@ -105,10 +105,12 @@ test_function = K.function(inputs=(input_tensor, target_tensor),
 # two variables in each batch in order to minimize the loss or cost function
 
 ############ WRITE YOUR CODE HERE #################
-num_batches = num_train_samples // batch_size
-train_y = train_y[...,np.newaxis]
-combined=np.hstack((train_X,train_y))
-
+num_batches = num_train_samples // batch_size #get number of batches.
+train_y = train_y[...,np.newaxis] #create column vector y, because first safed as an array
+combined=np.hstack((train_X,train_y)) #combine x and y into one matrix with shape(n,m+1)
+#two for loops
+#outter loop for shuffling by rows, to get new dataset per trainingintervall
+#inner loop for training by dataset num_batches,
 for j in range(num_epochs):
     shuffle(combined)
     print(combined)
